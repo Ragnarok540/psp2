@@ -1,5 +1,5 @@
 from math import sqrt
-from lista import sumar, largo, mapear, zipear, lista
+from lista import sumar, largo, mapear, zipear
 
 def promedio(x):
     return sumar(x) / largo(x) if largo(x) > 0 else 0
@@ -23,17 +23,29 @@ def beta_1(x, y):
     return numerador / denominador
 
 def beta_0(x, y):
-    pass
+    return promedio(y) - beta_1(x, y) * promedio(x)
 
 def r_xy(x, y):
-    pass
+    multip = zipear(lambda z, w: z * w, x, y)
+    sum_multip = sumar(multip)
+    sum_x = sumar(x)
+    sum_y = sumar(y)
+    cuadrados_x = mapear(lambda z: z * z, x)
+    sum_cuadrados_x = sumar(cuadrados_x)
+    cuadrados_y = mapear(lambda z: z * z, y)
+    sum_cuadrados_y = sumar(cuadrados_y)
+    numerador = largo(x) * sum_multip - sum_x * sum_y
+    denominador_a = largo(x) * sum_cuadrados_x - sum_x * sum_x
+    denominador_b = largo(x) * sum_cuadrados_y - sum_y * sum_y
+    return numerador / sqrt(denominador_a * denominador_b)
 
 def r2(x, y):
-    pass
+    r = r_xy(x, y)
+    return r * r
 
-def y_k():
-    pass
+def y_k(x, y, x_k):
+    return beta_0(x, y) + beta_1(x, y) * x_k
 
-ls1 = lista(130, 650, 99,  150, 128, 302, 95,  945,  368, 961)
-ls2 = lista(186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601)
-print(beta_1(ls1, ls2))
+#ls1 = lista(130, 650, 99,  150, 128, 302, 95,  945,  368, 961)
+#ls2 = lista(186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601)
+#print(y_k(ls1, ls2, 386))
