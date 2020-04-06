@@ -75,8 +75,17 @@ class EstadisticaTestCase(unittest.TestCase):
         observado = estadistica.beta_1(self.eps, self.adh)
         self.assertEqual(esperado, observado)
 
-    def test_beta_0(self):
+        # Test 3 plan added and modified size vs actual added and modified size
+        esperado = 1.430966943551199
+        observado = estadistica.beta_1(self.paams, self.aaams)
+        self.assertEqual(esperado, observado)
 
+        # Test 4 plan added and modified size vs actual development hours
+        esperado = 0.14016352638883633
+        observado = estadistica.beta_1(self.paams, self.adh)
+        self.assertEqual(esperado, observado)
+
+    def test_beta_0(self):
         # Test 1 estimated proxy size vs actual added and modified size
         esperado = -22.55253275203438
         observado = estadistica.beta_0(self.eps, self.aaams)
@@ -87,8 +96,17 @@ class EstadisticaTestCase(unittest.TestCase):
         observado = estadistica.beta_0(self.eps, self.adh)
         self.assertEqual(esperado, observado)
 
-    def test_r_xy(self):
+        # Test 3 plan added and modified size vs actual added and modified size
+        esperado = -23.92388825291539
+        observado = estadistica.beta_0(self.paams, self.aaams)
+        self.assertEqual(esperado, observado)
 
+        # Test 4 plan added and modified size vs actual development hours
+        esperado = -4.603745423308993
+        observado = estadistica.beta_0(self.paams, self.adh)
+        self.assertEqual(esperado, observado)
+
+    def test_r_xy(self):
         # Test 1 estimated proxy size vs actual added and modified size
         esperado = 0.9544965741046826
         observado = estadistica.r_xy(self.eps, self.aaams)
@@ -99,8 +117,17 @@ class EstadisticaTestCase(unittest.TestCase):
         observado = estadistica.r_xy(self.eps, self.adh)
         self.assertEqual(esperado, observado)
 
-    def test_r2(self):
+        # Test 3 plan added and modified size vs actual added and modified size
+        esperado = 0.9631140931490527
+        observado = estadistica.r_xy(self.paams, self.aaams)
+        self.assertEqual(esperado, observado)
 
+        # Test 4 plan added and modified size vs actual development hours
+        esperado = 0.9480329874300509
+        observado = estadistica.r_xy(self.paams, self.adh)
+        self.assertEqual(esperado, observado)
+
+    def test_r2(self):
         # Test 1 estimated proxy size vs actual added and modified size
         esperado = 0.9110637099775758
         observado = estadistica.r2(self.eps, self.aaams)
@@ -111,8 +138,17 @@ class EstadisticaTestCase(unittest.TestCase):
         observado = estadistica.r2(self.eps, self.adh)
         self.assertEqual(esperado, observado)
 
-    def test_y_k(self):
+        # Test 3 plan added and modified size vs actual added and modified size
+        esperado = 0.9275887564223222
+        observado = estadistica.r2(self.paams, self.aaams)
+        self.assertEqual(esperado, observado)
 
+        # Test 4 plan added and modified size vs actual development hours
+        esperado = 0.8987665452555471
+        observado = estadistica.r2(self.paams, self.adh)
+        self.assertEqual(esperado, observado)
+
+    def test_y_k(self):
         # Test 1 estimated proxy size vs actual added and modified size
         esperado = 644.4293837638623
         observado = estadistica.y_k(self.eps, self.aaams, 386)
@@ -121,4 +157,14 @@ class EstadisticaTestCase(unittest.TestCase):
         # Test 2 estimated proxy size vs actual development hours
         esperado = 60.85800527962121
         observado = estadistica.y_k(self.eps, self.adh, 386)
+        self.assertEqual(esperado, observado)
+
+        # Test 3 plan added and modified size vs actual added and modified size
+        esperado = 528.4293519578474
+        observado = estadistica.y_k(self.paams, self.aaams, 386)
+        self.assertEqual(esperado, observado)
+
+        # Test 4 plan added and modified size vs actual development hours
+        esperado = 49.49937576278183
+        observado = estadistica.y_k(self.paams, self.adh, 386)
         self.assertEqual(esperado, observado)
