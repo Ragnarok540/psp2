@@ -18,6 +18,14 @@ tienen {largo(ls1)} y {largo(ls2)} elementos respectivamente.""")
     except ValueError:
         print("ERROR: Todos los parámetros deben ser números reales o enteros.")
         sys.exit()
+    except FileNotFoundError:
+        print("ERROR: El archivo especificado no fue encontrado.")
+        sys.exit()
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    try:
+        main(sys.argv[1], sys.argv[2])
+    except IndexError:
+        print("""ERROR: Se requieren dos parámetros, la ruta del archivo CSV
+y el valor x_k, por ejemplo: 'test.csv 386'.""")
+        sys.exit()
