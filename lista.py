@@ -23,7 +23,5 @@ def mapear(f, x):
     return construir(f(primero(x)), mapear(f, resto(x))) if x else None
 
 def zipear(f, x, y):
-    return construir(f(primero(x), primero(y)), zipear(f, resto(x), resto(y))) if x and y else None
-
-
-#print(zipear(lambda z, w: z * w, lista(1, 2, 3), lista(3, 2, 1)))
+    return construir(f(primero(x), primero(y)),
+                     zipear(f, resto(x), resto(y))) if x and y else None

@@ -3,12 +3,13 @@ from csv import reader
 from lista import lista as ls
 
 def leer_archivo(ruta):
-    r = join(dirname(realpath(__file__)), ruta)
-    result = []
-    with open(r, newline='') as a:
-        lector = reader(a, delimiter=';')
+    ruta = join(dirname(realpath(__file__)), ruta)
+    resultado = []
+    
+    with open(ruta, newline='') as archivo:
+        lector = reader(archivo, delimiter=';')
+        
         for fila in lector:
-            result.append(ls(*fila))
-    return (result[0], result[1])
-
-#print(leer_archivo("test.csv"))
+            resultado.append(ls(*fila))
+            
+    return resultado[0], resultado[1]
